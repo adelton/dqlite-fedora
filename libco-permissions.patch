@@ -1,0 +1,11 @@
+--- Makefile.orig	2020-04-05 12:16:09.143871541 +0000
++++ Makefile	2020-04-05 12:16:20.729981628 +0000
+@@ -20,7 +20,7 @@
+ 	install -d $(DESTDIR)$(PREFIX)/$(INCLUDEDIR)/
+ 	install -d $(DESTDIR)$(PREFIX)/$(LIBDIR)/
+ 	install -d $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
+-	install -m 0664 libco.so.$(MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libco.so.$(MIN)
++	install -m 0775 libco.so.$(MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libco.so.$(MIN)
+ 	install -m 0664 libco.pc $(DESTDIR)$(PREFIX)/$(LIBDIR)/pkgconfig/
+ 	ln -s libco.so.$(MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libco.so.$(MAJ)
+ 	ln -s libco.so.$(MIN) $(DESTDIR)$(PREFIX)/$(LIBDIR)/libco.so

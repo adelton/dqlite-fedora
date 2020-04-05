@@ -7,6 +7,7 @@ License: ISC
 URL: https://byuu.org/projects/libco
 
 Source0: https://github.com/canonical/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1: libco-permissions.patch
 
 BuildRequires: gcc
 BuildRequires: autoconf
@@ -30,6 +31,7 @@ Development libraries for libco
 
 %prep
 %setup -q
+%patch1 -p0
 
 %build
 %set_build_flags
