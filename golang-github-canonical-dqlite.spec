@@ -28,6 +28,10 @@ BuildRequires:  golang(github.com/Rican7/retry)
 BuildRequires:  golang(github.com/Rican7/retry/backoff)
 BuildRequires:  golang(github.com/Rican7/retry/strategy)
 BuildRequires:  golang(github.com/spf13/cobra)
+BuildRequires:  pkgconfig(dqlite)
+BuildRequires:  pkgconfig(raft)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  sqlite-libs(wal-replication)
 
 %if %{with check}
 # Tests
