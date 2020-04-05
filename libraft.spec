@@ -12,6 +12,7 @@ BuildRequires: gcc
 BuildRequires: automake
 BuildRequires: autoconf
 BuildRequires: libtool
+BuildRequires: pkgconfig(libuv)
 
 %description
 Fully asynchronous C implementation of the Raft consensus protocol.
