@@ -59,6 +59,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 
 %if %{with check}
 %check
+%global gotestflags %{gotestflags} -v -tags "libsqlite3"
 %gocheck
 %endif
 
