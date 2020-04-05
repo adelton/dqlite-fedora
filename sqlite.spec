@@ -16,9 +16,9 @@ Release: 1%{?dist}
 License: Public Domain
 URL: http://www.sqlite.org/
 
-Source0: http://www.sqlite.org/%{year}/sqlite-src-%{realver}.zip
-Source1: http://www.sqlite.org/%{year}/sqlite-doc-%{docver}.zip
-Source2: http://www.sqlite.org/%{year}/sqlite-autoconf-%{realver}.tar.gz
+Source0: https://www.sqlite.org/%{year}/sqlite-src-%{realver}.zip
+Source1: https://www.sqlite.org/%{year}/sqlite-doc-%{docver}.zip
+Source2: https://www.sqlite.org/%{year}/sqlite-autoconf-%{realver}.tar.gz
 # Support a system-wide lemon template
 Patch1: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.6.23-lemon-system-template.patch
 # sqlite >= 3.7.10 is buggy if malloc_usable_size() is detected, disable it:
