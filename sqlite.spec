@@ -9,16 +9,17 @@
 %define rpmver 3.31.1
 %define year 2020
 
-Summary: Library that implements an embeddable SQL database engine
+Summary: Library that implements an embeddable SQL database engine with WAL replication patch
 Name: sqlite
 Version: %{rpmver}
-Release: 1%{?dist}
+Release: 1.rp.1%{?dist}
 License: Public Domain
 URL: http://www.sqlite.org/
 
 Source0: https://www.sqlite.org/%{year}/sqlite-src-%{realver}.zip
 Source1: https://www.sqlite.org/%{year}/sqlite-doc-%{docver}.zip
 Source2: https://www.sqlite.org/%{year}/sqlite-autoconf-%{realver}.tar.gz
+Patch0: https://github.com/canonical/sqlite/releases/download/version-3.31.1%2Breplication4/sqlite-3.31.1.diff#/sqlite-wal-replication.patch
 # Support a system-wide lemon template
 Patch1: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.6.23-lemon-system-template.patch
 # sqlite >= 3.7.10 is buggy if malloc_usable_size() is detected, disable it:
@@ -71,6 +72,8 @@ Summary: Development tools for the sqlite3 embeddable SQL database engine
 Requires: %{name}%{?_isa} = %{version}-%{release}
 Requires: pkgconfig
 
+Provides: %{name}-devel(wal-replication)
+
 %description devel
 This package contains the header files and development documentation 
 for %{name}. If you like to develop programs using %{name}, you will need 
@@ -82,6 +85,8 @@ Summary: Shared library for the sqlite3 embeddable SQL database engine.
 # Ensure updates from pre-split work on multi-lib systems
 Obsoletes: %{name} < 3.11.0-1
 Conflicts: %{name} < 3.11.0-1
+
+Provides: %{name}-libs(wal-replication)
 
 %description libs
 This package contains the shared library for %{name}.
@@ -140,6 +145,7 @@ This package contains the analysis program for %{name}.
 
 %prep
 %setup -q -a1 -n %{name}-src-%{realver}
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -167,6 +173,7 @@ export CFLAGS="$RPM_OPT_FLAGS $RPM_LD_FLAGS -DSQLITE_ENABLE_COLUMN_METADATA=1 \
            --enable-threadsafe \
            --enable-threads-override-locks \
            --enable-load-extension \
+           --enable-wal-replication \
            %{?with_tcl:TCLLIBDIR=%{tcl_sitearch}/sqlite3}
 
 # rpath removal
@@ -268,6 +275,9 @@ make test
 %endif
 
 %changelog
+* Sun Apr 05 2020 Jan Pazdziora <adelton@fedoraproject.org> - 3.31.1-1.rp.1
+- Added WAL replication patch.
+
 * Wed Feb 05 2020 Ondrej Dubaj <odubaj@redhat.com> - 3.31.1-1
 - Updated to version 3.31.1 (https://sqlite.org/releaselog/3_31_1.html)
 - updated spec file, deleted useless patches
