@@ -20,26 +20,26 @@ Source0: http://www.sqlite.org/%{year}/sqlite-src-%{realver}.zip
 Source1: http://www.sqlite.org/%{year}/sqlite-doc-%{docver}.zip
 Source2: http://www.sqlite.org/%{year}/sqlite-autoconf-%{realver}.tar.gz
 # Support a system-wide lemon template
-Patch1: sqlite-3.6.23-lemon-system-template.patch
+Patch1: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.6.23-lemon-system-template.patch
 # sqlite >= 3.7.10 is buggy if malloc_usable_size() is detected, disable it:
 # https://bugzilla.redhat.com/show_bug.cgi?id=801981
 # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=665363
-Patch2: sqlite-3.12.2-no-malloc-usable-size.patch
+Patch2: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.12.2-no-malloc-usable-size.patch
 # Temporary workaround for failed percentile test, see patch for details
-Patch3: sqlite-3.8.0-percentile-test.patch
+Patch3: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.8.0-percentile-test.patch
 # Disable test date-2.2c on i686
-Patch4: sqlite-3.16-datetest-2.2c.patch
+Patch4: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.16-datetest-2.2c.patch
 # Modify sync2.test to pass with DIRSYNC turned off
-Patch5: sqlite-3.18.0-sync2-dirsync.patch
+Patch5: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.18.0-sync2-dirsync.patch
 # Resolving s390 arch incompatibility
 # https://github.com/sqlite/sqlite/commit/b9f2e5f7774cee2282c2b0980bc29233e643200f
 # https://github.com/sqlite/sqlite/commit/4b2f45be3426f18efbe251d39352e11e256b93e9
 # https://github.com/sqlite/sqlite/commit/fbfd113365bb001152adb9944e127e9620ec3738
 # https://github.com/sqlite/sqlite/commit/925ab5c17ef1061e2d9086e162e8381c4b2ebb2a
-Patch6: sqlite-3.31.1-s390-arch-compatibibility.patch
+Patch6: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.31.1-s390-arch-compatibibility.patch
 # Modifying FTS tests to support big endian platforms
 # https://github.com/sqlite/sqlite/commit/9ca9a53a421920a412d4fdfd57303593c1ecf723
-Patch7: sqlite-3.31.1-modify-tests-BE.patch
+Patch7: https://src.fedoraproject.org/rpms/sqlite/raw/236dd0f14c783c542afcd49bf7791f9df50d70a6/f/sqlite-3.31.1-modify-tests-BE.patch
 
 BuildRequires:  gcc
 BuildRequires: ncurses-devel readline-devel glibc-devel
